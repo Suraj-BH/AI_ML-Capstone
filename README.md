@@ -20,3 +20,6 @@ Gradient Boosted Trees (XGBoost): The primary predictive engine, chosen to learn
 📂 Link to Notebook
 
 Click here to view the Jupyter Notebook
+Link to [https://github.com/Suraj-BH/AI_ML-Capstone/blob/main/Capstone.ipynb]
+
+
