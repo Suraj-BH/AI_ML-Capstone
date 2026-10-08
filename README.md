@@ -4,7 +4,7 @@ US Grocery Sales Demand Forecasting (Walmart M5)
 
 Kaggle Dataset Link [https://www.kaggle.com/competitions/m5-forecasting-accuracy/overview]
 
-📌 Business Value (Why It Matters)
+📌 *Business Value (Why It Matters)*
 
 If this forecasting question remains unanswered, the retailer is forced to rely on guesswork for ordering inventory. This leads to two expensive problems: understocking (lost revenue and frustrated customers) and overstocking (massive amounts of spoiled perishable goods and high storage costs).
 
