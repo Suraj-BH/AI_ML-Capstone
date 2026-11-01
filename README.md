@@ -26,7 +26,7 @@ Click here to view the Initial EDA Jupyter Notebook
 Link to [https://github.com/Suraj-BH/AI_ML-Capstone/blob/main/Capstone.ipynb]
 
 Click here to view the Final Capstone Jupyter Notebook
-Link to [https://github.com/Suraj-BH/AI_ML-Capstone/blob/main/Capstone.ipynb]
+Link to [https://github.com/Suraj-BH/AI_ML-Capstone/blob/main/Final-Capstone.ipynb]
 
 ### Summary of Findings
 
