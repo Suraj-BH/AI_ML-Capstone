@@ -22,10 +22,11 @@ Gradient Boosted Trees (XGBoost): The primary predictive engine, chosen to learn
 
 ### Link to Notebook
 
-Click here to view the Jupyter Notebook
+Click here to view the Initial EDA Jupyter Notebook
 Link to [https://github.com/Suraj-BH/AI_ML-Capstone/blob/main/Capstone.ipynb]
 
-
+Click here to view the Final Capstone Jupyter Notebook
+Link to [https://github.com/Suraj-BH/AI_ML-Capstone/blob/main/Capstone.ipynb]
 
 ### Summary of Findings
 
@@ -41,4 +42,27 @@ Implement Hierarchical Reconciliation: Apply Optimal Reconciliation techniques (
 Deepen Economic & Event Signals: Engineer more granular features out of the calendar.csv file, specifically isolating the impact of major religious holidays, sporting events (like the Superbowl), and long weekends, mapping their specific elasticities to different product categories (e.g., party supplies vs. fresh produce).
 Memory Optimization: Implement heavy data-downcasting (converting float64 to float16 and int32 to int8) within the Pandas dataframes to allow the processing of the full 5-year dataset on standard RAM limits.
 
+
+---
+
+## Phase 2: Classical Time Series Forecasting 
+
+### Expanding the Scope
+Following the initial exploratory data analysis and baseline modeling in Phase 1, Phase 2 scales the business problem across all 10 stores in California, Texas, and Wisconsin. To align with the strict statistical rigor of the **UC Berkeley Professional Certificate in Machine Learning and AI**, we pivoted from black-box machine learning algorithms to highly interpretable **Classical Time Series** methodologies. We focused specifically on the `HOBBIES` category to build a robust, store-level inventory forecasting system.
+
+### Modeling and Evaluation
+Instead of treating forecasting as a simple regression problem, we treated it as a structural statistical problem. 
+* **Time Series Decomposition:** We broke down the daily sales data into three distinct mathematical components: **Trend** (the underlying direction of sales), **Seasonality** (the repeating weekly spikes), and **Residuals** (the random noise).
+* **Holt-Winters Exponential Smoothing:** We applied an Additive Holt-Winters model for each of the 10 stores. This algorithm explicitly learns the weekly seasonal patterns and the overall trend extracted during the decomposition phase to predict future sales.
+* **Evaluation Metric:** We evaluated the models using **RMSE (Root Mean Squared Error)** over a 28-day holdout test period, as it heavily penalizes large, costly inventory forecasting errors.
+
+### Key Findings
+1. **Strong Weekly Seasonality:** The Time Series Decomposition revealed a strict 7-day recurring cycle across the stores. Sales consistently spike on weekends and dip mid-week. Capturing this mathematically allows for precise intra-week supply chain adjustments.
+2. **Interpretability over Complexity:** The Holt-Winters model provided highly competitive RMSE scores while remaining completely transparent. Unlike black-box machine learning models, stakeholders can explicitly see *why* the model predicts a spike (e.g., "The model added 50 units due to the Saturday seasonal factor").
+3. **Unbiased Error Distribution:** Analysis of the model's continuous residuals (errors) showed a normal distribution tightly centered around zero. This means the model is mathematically unbiased—it does not chronically over-forecast or under-forecast.
+
+### Recommendations & Next Steps
+1. **Dynamic Weekly Restocking:** Implement the Holt-Winters baseline forecasts into the store managers' weekly ordering systems. Because the model precisely captures the weekly seasonality, stores can shift deliveries from Mondays to Thursdays to anticipate the weekend surge without increasing total weekly holding costs.
+2. **Threshold Alerts:** Utilize the historical residual distribution to set automated alerts. If actual sales deviate from the Holt-Winters forecast by more than 2 standard deviations, the system should flag the store manager to investigate local anomalies (e.g., a local event or a competitor stock-out).
+3. **Next Steps for Data (Phase 3):** Incorporate an ARIMA/SARIMAX model variant to test whether adding exogenous variables (like SNAP benefit days or local weather data) reduces the residual noise further than pure Exponential Smoothing.
 
